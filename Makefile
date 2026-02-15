@@ -1,13 +1,15 @@
 SPEED = 2097152
 PORT = /dev/ttyUSB0
-SECRET = g9)(<ttG(HME>)BQc`g8Q`ykt-C^4Jr+
+SECRET = sadfhj9283ru982iwuh*?sdf_12-3ddq
+
+HSECRET = $(shell echo -n $(SECRET) | sha256sum | cut -d' ' -f1)
 
 client:
 	python3 client/main.py $(PORT):$(SPEED) $(SECRET)
 
 server:
 	cd server; \
-	export PLATFORMIO_BUILD_FLAGS='-DSPEED=\\\"$(SPEED)\\\" -DSECRET=\\\"$(SECRET)\\\"'; \
+	export PLATFORMIO_BUILD_FLAGS="-DSPEED=\\\"$(SPEED)\\\" -DHSECRET=\\\"$(HSECRET)\\\""; \
 	pio run -t upload
 
 install:
