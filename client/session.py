@@ -5,7 +5,6 @@ import struct, random
 import time
 import hashlib
 
-
 class SessionRequest(IntEnum):
     CLOSE = 0
     GET_TEMP = 1
@@ -16,7 +15,6 @@ class SessionStatus(IntEnum):
     EXPIRED = -1
     ERROR = 0
     OK = 1
-
 
 class Session:
     def __init__(self, comparam: str, secret: str):
@@ -179,7 +177,7 @@ class Session:
                     self.__key,
                     cipher.MODE_GCM,
                     iv,
-                    self.__session_id # AAD
+                    self.__session_id 
                 )
 
                 plaintext = aes.decrypt(cphr, tag)
