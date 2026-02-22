@@ -1,7 +1,6 @@
 SPEED = 2097152
 PORT = /dev/ttyUSB0
-SECRET = sadfhj9283ru982iwuh*?sdf_12-3ddq
-
+SECRET = GzElKAeeU0tJcAJYzSFwonRESnZT79RT
 HSECRET = $(shell echo -n $(SECRET) | sha256sum | cut -d' ' -f1)
 
 client:
